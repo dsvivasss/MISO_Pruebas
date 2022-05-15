@@ -14,16 +14,6 @@ Feature: Post features
     Then I see that the first post in the list has title "Mi nuevo post" and status "Published"
 
   @focus @clear
-  Scenario: Create a draft post successfully
-    Given I open Ghost admin page
-    And I login into the admin page
-    And I go to the new post page
-    When I create a new post with title "Mi nuevo post borrador"
-    And I return to the posts list
-    And I filter posts by status Draft
-    Then I see that the first post in the list has title "Mi nuevo post borrador" and status "Draft"
-
-  @focus @clear
   Scenario: Create a scheduled post successfully
     Given I open Ghost admin page
     And I login into the admin page
@@ -78,17 +68,3 @@ Feature: Post features
     And I update the new post
     And I return to the posts list
     Then I see that the first post in the list has title "Post editado" and status "Published"
-
-  @focus
-  Scenario: Delete a draft post
-    Given I open Ghost admin page
-    And I login into the admin page
-    And I go to the new post page
-    When I create a new post with title "Mi post borrador para eliminar"
-    And I return to the posts list
-    And I filter posts by status Draft
-    And I click in the first post in the list
-    And I open the post settings
-    And I delete the post
-    And I filter posts by status Draft
-    Then I see that there is no post with the title "Mi post borrador para eliminar" in the post list

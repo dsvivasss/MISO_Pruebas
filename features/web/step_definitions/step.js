@@ -1,20 +1,27 @@
 const selectors = require("../common/PageObjectIndex");
+const properties = require("../../../properties.json");
 
 const { Given, When, Then, Before, After } = require("@cucumber/cucumber");
 const expect = require("chai").expect;
 
+const screenshots_path = properties.screenshots_path
+const vrtActive = properties.vrtActive
+
 Given("I enter email {kraken-string}", async function (email) {
   let emailInput = await this.driver.$(selectors.selInputEmail);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page1.png`);
   return await emailInput.setValue(email);
 });
 
 Given("I enter password {kraken-string}", async function (email) {
   let passwordInput = await this.driver.$(selectors.selInputPassword);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page2.png`);
   return await passwordInput.setValue(email);
 });
 
 Given("I click on the login button", async function () {
   let loginButton = await this.driver.$(selectors.selButtonLogin);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page3.png`);
   return await loginButton.click();
 });
 

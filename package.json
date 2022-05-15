@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run": "./node_modules/.bin/cypress run",
     "kraken:run": "./node_modules/kraken-node/bin/kraken-node run"
   },
   "repository": {
@@ -21,7 +22,8 @@
     "cypress": "^9.6.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-xpath": "^1.6.2",
-    "kraken-node": "^1.0.24"
+    "kraken-node": "^1.0.24",
+    "resemblejs": "^4.1.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
