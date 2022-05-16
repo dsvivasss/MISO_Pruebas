@@ -3,6 +3,18 @@ Feature: Page features
   I want to create/modify page 
 
   @focus @clear
+  Scenario: Create a page successfully and see it live
+    Given I open Ghost admin page
+    And I login into the admin page
+    And I go to the pages list
+    When I create a new page
+    And I write "Nueva pagina en vivo" in the page title
+    And I click outside textbox
+    And I click on publish page dropdown
+    And I click on publish page button
+    Then I see the page
+
+  @focus @clear
   Scenario: Create a scheduled page successfully
     Given I open Ghost admin page
     And I login into the admin page
@@ -74,15 +86,4 @@ Feature: Page features
     And I sort by recently updated pages
     Then I see that the new page is named as " titulo modificado"
 
-  @focus @clear
-  Scenario: Create a page successfully and see it live
-    Given I open Ghost admin page
-    And I login into the admin page
-    And I go to the pages list
-    When I create a new page
-    And I write "Nueva pagina en vivo" in the page title
-    And I click outside textbox
-    And I click on publish page dropdown
-    And I click on publish page button
-    Then I see the page
     
