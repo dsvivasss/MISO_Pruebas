@@ -1,7 +1,7 @@
 {
   "ADMIN_EMAIL": "test_ghost_g13@gmail.com",
   "ADMIN_PASSWORD": "prueba123123",
-  "URL": "http://localhost:2368/ghost/",
-  "vrtActive": true,
+  "URL": "http://localhost:3001/ghost/",
+  "vrtActive": false,
   "screenshots_path": "./features/screenshots"
 }
