@@ -1,32 +1,129 @@
-# MISOPAG13
+# MISO_PRUEBAS Grupo 38
 
 Integrantes:
-* Camilo Alejandro Sánchez Cruz ca.sanchezc12@uniandes.edu.co
-* Lizeth Daniela Castellanos Alfonso ld.castellanos@uniandes.edu.co
 * Daniel Vivas Suarez d.vivass@uniandes.edu.co
 * Mateo Olaya Osorio m.olaya11@uniandes.edu.co
 
 ## Cómo ejecutar los tests
 
+Se utiliza la versión de ghost 4.41.3 y la 4.39 para realizar el VRT según la recomendación para utilizar verisones que no difieran mucho de su interfaz gráfica
+
 Pre-requisitos:
-* Instalar la versión 4.41.3 de ghost, para ello se puede ejecutar el siguiente comando
-`ghost install 4.41.3 --local`
+* Instalar y ejecutar la versión 4.41.3 de ghost, para ello se puede ejecutar el siguiente comando mediante docker
+
+```
+  docker run -d -e url=http://localhost:3001 -p 3001:2368 --name ghost_4.41 ghost:4.41
+
+  //Esto desplegará en la siguiente dirección la versión de Ghost Admin:
+
+  //Ghost 4.41
+  http://localhost:3001/ghost
+```
+
+* Instalar la versión 4.39 de ghost, para ello se puede ejecutar el siguiente comando mediante docker
+`ghost install 4.39 --local`
+
+```
+  docker run -d -e url=http://localhost:3002 -p 3002:2368 --name ghost_4.39 ghost:4.39
+
+  //Esto desplegará en la siguiente dirección la versión de Ghost Admin:
+
+  //Ghost 4.39
+  http://localhost:3002/ghost
+```
 
 * Tener una versión LTS de node reciente (preferiblemente v16.15.0) y una versión compatible de npm
 
 * Instalar adb en sus sitema operativo
   
-* Ejecutar `npm install` en la carpeta en la que se clonó el repositorio
+* Ejecutar `npm install` en la carpeta en la que se clonó este repositorio
 
-* Ejecutar ghost localmente, el sitio debe estar limpio, sin posts o tags creados
-### Cypress
-* Ejecutar el comando `npm run cypress:open` en a raíz del proyecto
+# Cypress
+* Ejecutar el comando `npm run cypress:open` en la raíz del proyecto
 * Hacer click en el archivo de pruebas que se desea ejecutar
 
-### Kraken
+## Correr modo pruebas de regresion visual en Ghost v4.41
+
+**Para que el reporte funcione se debe correr caso por caso de pruebas, NO todos al tiempo**
+
+
+
+En el archivo `cypress.json` debe estar la siguiente configuración. Se puede verificar que se está ejecutando en modo pruebas de regresión visual con la siguiente configuración.
+
+```
+  {
+  "testFiles": "**/*.feature",
+  "env": {
+    "url_admin": "http://localhost:3001/ghost/",
+    "admin_email": "test_ghost_g13@gmail.com",
+    "admin_password": "prueba123123",
+    "ghost_url": "http://localhost:3001/",
+    "vrtActive": true     //Esto es para que se ejecute  el modo de pruebas de regresión visual, cambiar a false si no se desea
+  },
+  "screenshotsFolder": "cypress/screenshots_4-41",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920
+}
+```
+
+## Correr modo pruebas de regresion visual en Ghost v4.39
+
+**Para que el reporte funcione se debe correr caso por caso de pruebas, NO todos al tiempo**
+
+En el archivo `cypress.json` debe estar la siguiente configuración. Se puede verificar que se está ejecutando en modo pruebas de regresión visual con la siguiente configuración.
+
+```
+  {
+  "testFiles": "**/*.feature",
+  "env": {
+    "url_admin": "http://localhost:3002/ghost/",
+    "admin_email": "test_ghost_g13@gmail.com",
+    "admin_password": "prueba123123",
+    "ghost_url": "http://localhost:3002/",
+    "vrtActive": true
+  },
+  "screenshotsFolder": "cypress/screenshots_4-39",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920
+}
+```
+
+# Kraken
 * Ejecutar el comando `npm run kraken:run` en la raíz del proyecto
 * Para ver un listado de los posibles errores por favor visitar el siguiente [enlace](https://thesoftwaredesignlab.github.io/AutTesingCodelabs/w5/krakenWeb/index.html) en la sección "Consideraciones adicionales"
 
+## Correr modo pruebas de regresion visual en Ghost v4.41
+
+En el archivo `properties.json` debe estar la siguiente configuración. Se puede verificar que se está ejecutando en modo pruebas de regresión visual con la siguiente configuración.
+
+```
+  {
+  "ADMIN_EMAIL": "test_ghost_g13@gmail.com",
+  "ADMIN_PASSWORD": "prueba123123",
+  "URL": "http://localhost:3001/ghost/",
+  "vrtActive": true,
+  "screenshots_path": "./cypress/screenshots_4-41/Kraken.feature"
+}
+```
+
+## Correr modo pruebas de regresion visual en Ghost v4.39
+
+En el archivo `properties.json` debe estar la siguiente configuración. Se puede verificar que se está ejecutando en modo pruebas de regresión visual con la siguiente configuración.
+
+```
+  {
+  "ADMIN_EMAIL": "test_ghost_g13@gmail.com",
+  "ADMIN_PASSWORD": "prueba123123",
+  "URL": "http://localhost:3002/ghost/",
+  "vrtActive": true,
+  "screenshots_path": "./cypress/screenshots_4-39/Kraken.feature"
+}
+```
+
+# Generar reporte de pruebas
+Para correr el reporte de pruebas se debe ejecutar el comando `node index.js` en la raíz del proyecto
+
+Ir a la ruta *./results/< Fecha actual >/report.html* y se verá el reporte de las pruebas
 
 ## Descripción de casos de prueba
 

@@ -7,7 +7,7 @@
     "ghost_url": "http://localhost:3001/",
     "vrtActive": true
   },
-  "screenshotsFolder": "cypress/screenshots",
+  "screenshotsFolder": "cypress/screenshots_4-39",
   "viewportHeight": 1080,
   "viewportWidth": 1920
 }

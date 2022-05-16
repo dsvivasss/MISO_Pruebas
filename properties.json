@@ -3,5 +3,5 @@
   "ADMIN_PASSWORD": "prueba123123",
   "URL": "http://localhost:2368/ghost/",
   "vrtActive": true,
-  "screenshots_path": "./features/screenshots"
+  "screenshots_path": "./cypress/screenshots_4-41/Kraken.feature"
 }

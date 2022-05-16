@@ -11,16 +11,36 @@ const {
 } = config;
 
 const functionalities = {
-    pages: {
-        name: 'page',
-        parentPath: 'Page.feature',
-        indexCases: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+    // pages: {
+    //     name: 'page',
+    //     parentPath: 'Page.feature',
+    //     indexCases: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+    // },
+    // posts: {
+    //     name: 'post',
+    //     parentPath: 'Post.feature',
+    //     indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    // },
+    settings: {
+        name: 'setting',
+        parentPath: 'Setting.feature',
+        indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14]
     },
-    posts: {
-        name: 'post',
-        parentPath: 'Post.feature',
-        indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    }
+    // tags: {
+    //     name: 'tag',
+    //     parentPath: 'Tag.feature',
+    //     indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    // },
+    // invitePeople: {
+    //     name: 'invitePeople',
+    //     parentPath: 'InvitePeople.feature',
+    //     indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12]
+    // },
+    // kraken: {
+    //     name: 'kraken',
+    //     parentPath: 'Kraken.feature',
+    //     indexCases: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+    // }
 }
 
 async function executeTest() {
@@ -39,16 +59,6 @@ async function executeTest() {
                 });
             }
 
-            //Launch the current browser context
-            // const browser = await playwright[b].launch({headless: true, viewport: {width:viewportWidth, height:viewportHeight}});
-            // const context = await browser.newContext();
-            // const page = await context.newPage(); 
-            // await page.goto(config.url);
-            // await page.screenshot({ path: `./results/${datetime}/before-${b}.png` });
-            // await page.click('#generate');
-            // await page.screenshot({ path: `./results/${datetime}/after-${b}.png` });
-            // await browser.close();
-
             for (let functionality of Object.keys(functionalities)) {
                 const {
                     name,
@@ -56,41 +66,27 @@ async function executeTest() {
                 } = functionalities[functionality];
 
                 for (let i of functionalities[functionality].indexCases) {
-                    const data = await compareImages(
-                        fs.readFileSync(`./cypress/screenshots_4-41-3/${parentPath}/${name}${i}.png`),
-                        fs.readFileSync(`./cypress/screenshots/${parentPath}/${name}${i}.png`),
-                        options
-                    );
-                    resultInfo[b] = {
-                        isSameDimensions: data.isSameDimensions,
-                        dimensionDifference: data.dimensionDifference,
-                        rawMisMatchPercentage: data.rawMisMatchPercentage,
-                        misMatchPercentage: data.misMatchPercentage,
-                        diffBounds: data.diffBounds,
-                        analysisTime: data.analysisTime
+                    try {
+                        const data = await compareImages(
+                            fs.readFileSync(`./cypress/screenshots_4-41/${parentPath}/${name}${i}.png`),
+                            fs.readFileSync(`./cypress/screenshots_4-39/${parentPath}/${name}${i}.png`),
+                            options
+                        );
+                        resultInfo[b] = {
+                            isSameDimensions: data.isSameDimensions,
+                            dimensionDifference: data.dimensionDifference,
+                            rawMisMatchPercentage: data.rawMisMatchPercentage,
+                            misMatchPercentage: data.misMatchPercentage,
+                            diffBounds: data.diffBounds,
+                            analysisTime: data.analysisTime
+                        }
+                        fs.writeFileSync(`./results/${datetime}/compare-${b}-${name}${i}.png`, data.getBuffer());
+                    } catch (e) {
+                        console.log(e);
                     }
-                    fs.writeFileSync(`./results/${datetime}/compare-${b}-${name}${i}.png`, data.getBuffer());
 
                 }
             }
-
-            // for (let i = 1; i < 15; i++) {
-            //     const data = await compareImages(
-            //         fs.readFileSync(`./cypress/screenshots_4-41-3/Page.feature/page${i}.png`),
-            //         fs.readFileSync(`./cypress/screenshots/Page.feature/page${i}.png`),
-            //         options
-            //     );
-            //     resultInfo[b] = {
-            //         isSameDimensions: data.isSameDimensions,
-            //         dimensionDifference: data.dimensionDifference,
-            //         rawMisMatchPercentage: data.rawMisMatchPercentage,
-            //         misMatchPercentage: data.misMatchPercentage,
-            //         diffBounds: data.diffBounds,
-            //         analysisTime: data.analysisTime
-            //     }
-            //     fs.writeFileSync(`./results/${datetime}/compare-${b}-page${i}.png`, data.getBuffer());
-
-            // }
 
         }
 
@@ -122,11 +118,11 @@ function browser(b, info) {
                     <div class="imgline">
                         <div class="imgcontainer">
                             <span class="imgname">Reference ${name}${i}</span>
-                            <img class="img2" src="../../cypress/screenshots_4-41-3/${parentPath}/${name}${i}.png" id="refImage" label="Reference">
+                            <img class="img2" src="../../cypress/screenshots_4-41/${parentPath}/${name}${i}.png" id="refImage" label="Reference">
                         </div>
                         <div class="imgcontainer">
                             <span class="imgname">Test ${name}${i}</span>
-                            <img class="img2" src="../../cypress/screenshots/${parentPath}/${name}${i}.png" id="testImage" label="Test">
+                            <img class="img2" src="../../cypress/screenshots_4-39/${parentPath}/${name}${i}.png" id="testImage" label="Test">
                         </div>
                         </div>
                         <div class="imgline">

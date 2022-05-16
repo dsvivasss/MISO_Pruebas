@@ -82,7 +82,8 @@ export function filterPublishedPages() {
 }
 
 export function viewSite() {
-  return cy.xpath(selViewSiteButton).click();
+  // check if button is visible
+  return cy.xpath(selViewSiteButton).should("be.visible");
 }
 
 export function pageSettings() {
