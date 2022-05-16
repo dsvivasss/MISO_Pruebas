@@ -5,7 +5,7 @@
     "admin_email": "test_ghost_g13@gmail.com",
     "admin_password": "prueba123123",
     "ghost_url": "http://localhost:3001/",
-    "vrtActive": true
+    "vrtActive": false
   },
   "screenshotsFolder": "cypress/screenshots",
   "viewportHeight": 1080,
