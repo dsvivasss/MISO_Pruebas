@@ -19,9 +19,6 @@ Feature: Tags features
     And I login into the admin page
     And I go to the settings page
     And I go to the staff page
-    And I click on invite people button
-    When I invite people with email "mateoolaya2@gmail.com"
-    And I click on send invitation now button
     And I click on revoke button
-    Then I see that the prompt notification list has email "mateoolaya2@gmail.com"
+    Then I see that the prompt notification list has email "mateoolaya1@gmail.com"
   

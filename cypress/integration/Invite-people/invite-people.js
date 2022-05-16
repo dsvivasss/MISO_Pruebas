@@ -24,7 +24,7 @@ Cypress.Screenshot.defaults({
 Given("I open Ghost admin page", () => {
   cy.visit(Cypress.env("url_admin"));
   cy.wait(2000);
-  Cypress.env("vrtActive") && cy.screenshot("Invite1");
+  Cypress.env("vrtActive") && cy.screenshot("invite1");
 });
 
 Given("I login into the admin page", () => {
@@ -32,25 +32,25 @@ Given("I login into the admin page", () => {
   setPassword(Cypress.env("admin_password"));
   clickLogin();
   cy.wait(2000);
-  Cypress.env("vrtActive") && cy.screenshot("Invite2");
+  Cypress.env("vrtActive") && cy.screenshot("invite2");
 });
 
 Given("I go to the settings page", () => {
   clickSettings();
   cy.wait(2000);
-  Cypress.env("vrtActive") && cy.screenshot("Invite3");
+  Cypress.env("vrtActive") && cy.screenshot("invite3");
 });
 
 Given("I go to the staff page", () => {
   clickStaff();
   cy.wait(1000);
-  Cypress.env("vrtActive") && cy.screenshot("Invite4");
+  Cypress.env("vrtActive") && cy.screenshot("invite4");
 });
 
 Given("I click on invite people button", () => {
   clickInvitePeople();
   cy.wait(2000);
-  Cypress.env("vrtActive") && cy.screenshot("Invite5");
+  Cypress.env("vrtActive") && cy.screenshot("invite5");
 });
 
 When(
@@ -60,7 +60,7 @@ When(
     clickRoleAuthor();
     // saveSendInvitation();
     cy.wait(2000);
-    Cypress.env("vrtActive") && cy.screenshot("Invite6");
+    Cypress.env("vrtActive") && cy.screenshot("invite6");
   }
 );
 
@@ -68,14 +68,14 @@ When(
   "I click on send invitation now button",() => {
     clickInviteNow();
     cy.wait(2000);
-    Cypress.env("vrtActive") && cy.screenshot("Invite7");
+    Cypress.env("vrtActive") && cy.screenshot("invite7");
 });
 
 When(
   "I click on revoke button",() => {
     clickRevoke();
     cy.wait(2000);
-    Cypress.env("vrtActive") && cy.screenshot("Invite8");
+    Cypress.env("vrtActive") && cy.screenshot("invite8");
 });
 
 Then(
@@ -85,7 +85,7 @@ Then(
     const tag = lastInviteInList();
     tag.should("contain.text", email);
     cy.wait(2000);
-    Cypress.env("vrtActive") && cy.screenshot("Invite9");
+    Cypress.env("vrtActive") && cy.screenshot("invite9");
   }
 );
 
@@ -95,6 +95,6 @@ Then(
     const tag = lastPrompt();
     tag.should("contain.text", "Invitation revoked");
     cy.wait(100);
-    Cypress.env("vrtActive") && cy.screenshot("Invite10");
+    Cypress.env("vrtActive") && cy.screenshot("invite10");
   }
 );
