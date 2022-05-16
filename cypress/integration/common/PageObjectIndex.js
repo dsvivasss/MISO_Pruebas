@@ -7,3 +7,4 @@ export * from "./TagsList";
 export * from "./PageList";
 export * from "./Settings";
 export * from "./PageEditor";
+export * from "./InvitePeople.js";
