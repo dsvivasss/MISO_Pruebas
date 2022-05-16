@@ -46,7 +46,7 @@ Pre-requisitos:
 
 **Para que el reporte funcione se debe correr caso por caso de pruebas, NO todos al tiempo**
 
-
+** En el archivo index.js aparecen comentados casos de pruebas, si se desea ver el reporte de todos quitar el comentario de la lista `functionalities` ubicado en la linea 13 **
 
 En el archivo `cypress.json` debe estar la siguiente configuración. Se puede verificar que se está ejecutando en modo pruebas de regresión visual con la siguiente configuración.
 
