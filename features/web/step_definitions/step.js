@@ -1,20 +1,27 @@
 const selectors = require("../common/PageObjectIndex");
+const properties = require("../../../properties.json");
 
 const { Given, When, Then, Before, After } = require("@cucumber/cucumber");
 const expect = require("chai").expect;
 
+const screenshots_path = properties.screenshots_path
+const vrtActive = properties.vrtActive
+
 Given("I enter email {kraken-string}", async function (email) {
   let emailInput = await this.driver.$(selectors.selInputEmail);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page1.png`);
   return await emailInput.setValue(email);
 });
 
 Given("I enter password {kraken-string}", async function (email) {
   let passwordInput = await this.driver.$(selectors.selInputPassword);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page2.png`);
   return await passwordInput.setValue(email);
 });
 
 Given("I click on the login button", async function () {
   let loginButton = await this.driver.$(selectors.selButtonLogin);
+  vrtActive && await this.driver.saveScreenshot(`${screenshots_path}/page3.png`);
   return await loginButton.click();
 });
 
@@ -444,3 +451,54 @@ Then(
     expect(usernameText).to.equal(user_name);
   }
 );
+
+Given("I click on the settings page",async function(){
+  const settingsPage = await this.driver.$("/html/body/div[2]/div/nav[1]/div/section/div[2]/div/div/div[2]/a");
+  return await settingsPage.click();
+});
+
+Given("I click to the staff page",async function(){
+  const staffPage = await this.driver.$("/html/body/div[2]/div/main/section/section/div[2]/a[4]");
+  return await staffPage.click();
+});
+
+Given("I click on the invite people button",async function(){
+  const invitePeopleButton = await this.driver.$("/html/body/div[2]/div/main/section/div/header/section/button");
+  return await invitePeopleButton.click();
+});
+
+When("I write {kraken-string} in the email",async function (email) {
+  let emailTextArea = await this.driver.$("/html/body/div[5]/div/div/div/div/div[2]/section/div/div[1]/fieldset/div[1]/input");
+  await emailTextArea.setValue(email);
+});
+
+When("I click on the colaborator button",async function(){
+  const contributorButton = await this.driver.$("/html/body/div[5]/div/div/div/div/div[2]/section/div/div[1]/fieldset/div[2]/div[1]/div[2]");
+  return await contributorButton.click();
+});
+
+When("I click on send invitation now button",async function(){
+  const sendInvitationButton = await this.driver.$("/html/body/div[5]/div/div/div/div/div[2]/section/div/div[2]/button");
+  return await sendInvitationButton.click();
+});
+
+When("I click on the revoke button",async function(){
+  const sendRevokeButton = await this.driver.$("/html/body/div[2]/div/main/section/section/section[1]/div/div/article/div[2]/div/a[1]");
+  return await sendRevokeButton.click();
+});
+
+Then(
+  "I see that the last active user in the invited users list has email {kraken-string}",
+  async function (email) {
+    const colaboratorEmail = await this.driver.$("/html/body/div[2]/div/main/section/section/section[1]/div/div/article/div[1]/div/h3");
+    const usernameText = await colaboratorEmail.getText();
+    expect(usernameText).to.equal(email);
+});
+
+Then(
+  "I see that the last prompt has value {kraken-string}",
+  async function (value) {
+    const promptMesage = await this.driver.$("/html/body/div[2]/div/aside/article/div[2]/span");
+    const valueText = await promptMesage.getText();
+    expect(valueText).to.equal(value);
+});
