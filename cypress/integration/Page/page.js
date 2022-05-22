@@ -1,5 +1,10 @@
 import { Then, Given, When, After } from "cypress-cucumber-preprocessor/steps";
 
+// import data apriori
+import * as data from '../../data/data.json'
+import randomString from "../../functions/randomString";
+import removeChar from "../../functions/modifyString";
+
 import {
   setEmail,
   clickLogin,
@@ -46,7 +51,8 @@ Given("I open Ghost admin page", () => {
 });
 
 Given("I login into the admin page", () => {
-  setEmail(Cypress.env("admin_email"));
+  // setEmail(Cypress.env("admin_email"));
+  setEmail(removeChar(data.input_email_admin, "@")); // Ejemplo removiendo caracteres de un string --------
   setPassword(Cypress.env("admin_password"));
   clickLogin();
   cy.wait(2000);
@@ -65,7 +71,7 @@ When("I create a new page", () => {
 });
 
 When("I write {string} in the page title", (title) => {
-  writeTitle(title);
+  writeTitle(randomString(10)); // Ejemplo utilizando random string ----------------------> randomString(10)
   cy.wait(100);
   Cypress.env("vrtActive") && cy.screenshot("page5");
 });

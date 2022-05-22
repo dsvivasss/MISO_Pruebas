@@ -1,10 +1,10 @@
 {
   "testFiles": "**/*.feature",
   "env": {
-    "url_admin": "http://localhost:3001/ghost/",
+    "url_admin": "http://localhost:2368/ghost/",
     "admin_email": "test_ghost_g13@gmail.com",
     "admin_password": "prueba123123",
-    "ghost_url": "http://localhost:3001/",
+    "ghost_url": "http://localhost:2368/",
     "vrtActive": false
   },
   "screenshotsFolder": "cypress/screenshots_4-39",
