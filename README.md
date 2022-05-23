@@ -56,5 +56,8 @@ Pre-requisitos:
 * Se usó la libreria de Faker para seleccionar los datos de los escearios relacionados con las features de Settings. Esto facilitó crear un gran nivel de datos de prueba para cada una de las ejecuciones, en tanto no fue necesario construir el data pool de manera manual. 
 
 
+### Relación de las estrategias y los casos de prueba
+<img width="501" alt="image" src="https://user-images.githubusercontent.com/98785714/169745799-628bf70a-b1d1-4714-9a62-af018d753ebe.png">
+
 
 
