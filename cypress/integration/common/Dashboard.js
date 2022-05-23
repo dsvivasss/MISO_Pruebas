@@ -5,6 +5,7 @@ const selLinkPages = "a.ember-view";
 const selHeadingSiteTitle = ".site-title";
 const selParagraphSiteDescription = ".site-header-content>p";
 const selDivMenuSiteTitle = ".gh-nav-menu-details-sitetitle";
+const selDashboardTitle = "/html/body/div[2]/div/main/section/div[1]/header/h2";
 
 export function clickNewPost() {
   cy.get(selLinkNewPost).click();
@@ -41,4 +42,8 @@ export function clickNewPage() {
 
 export function clickPages() {
   cy.get(selLinkPages).contains("Pages").click();
+}
+
+export function getDashboardTitle() {
+  return cy.xpath(selDashboardTitle);
 }
