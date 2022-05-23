@@ -53,7 +53,7 @@ Pre-requisitos:
 * Se guardaron los datos en la misma función de la feature Create Page y en tiempo de ejecución se escogió de forma aleatoria el dato a presentar en el escenario de prueba. Se creó el dato en un paso, y en uno posterior se reutilizó la informacion.
 
 ### Escenario aleatorio
-* Se usó la libreria de Faker para seleccionar los datos de los escearios relacionados con las features de Settings. Esto facilitó crear un gran nivel de datos de prueba para cada una de las ejecuciones, en tanto no fue necesario construir el data pool de manera manual. 
+* Se usó la libreria de Faker para seleccionar los datos de los escenarios relacionados con las features de Settings. Esto facilitó crear un gran nivel de datos de prueba para cada una de las ejecuciones, en tanto no fue necesario construir el data pool de manera manual. 
 
 
 ### Relación de las estrategias y los casos de prueba
