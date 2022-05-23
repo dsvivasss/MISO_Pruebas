@@ -584,3 +584,35 @@ Feature: Settings features
     And I type a secondary navigation with "100" characters
     And I save settings
     Then I should not see a secondary navigation message error
+
+  @focus
+  Scenario: Set an empty navigation url account
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation url field
+    And I save settings
+    Then I should see a navigation message error
+  
+  @focus
+  Scenario: Set a correct navigation url account
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation url field
+    And I type a correct navigation url
+    And I save settings
+    Then I should not see a navigation message error
+  
+  @focus
+  Scenario: Set an incorrect navigation url account
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation url field
+    And I type an incorrect navigation url
+    And I save settings
+    Then I should see a navigation message error
