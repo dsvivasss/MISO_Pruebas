@@ -5,15 +5,38 @@ const selButtonSave = "button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view";
 const selExpandButton = ".gh-expandable-header>button";
 const selLinkFacebook = ".gh-social-facebook";
 const selLinkTwitter = ".gh-social-twitter";
+const selSavedButtonSuccess = ".gh-btn-green"
+
 const selExpandTiTleAndDescription = "/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[1]/button";
 const selExpandLanguage = '/html/body/div[2]/div/main/section/div[2]/section/div[3]/div[1]/button'
+const selExpandMetadata = '/html/body/div[2]/div/main/section/div[3]/section/div[1]/div[1]/button'
+const selExpandTwitter = '/html/body/div[2]/div/main/section/div[3]/section/div[2]/div[1]/button'
+const selExpandFacebook = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[1]/button'
+const selExpandSocial = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[1]/button'
+
 const selTitle = "/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[1]/input"
 const selDescription = "/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[2]/input"
 const selLanguage = '/html/body/div[2]/div/main/section/div[2]/section/div[3]/div[2]/div/div/div/div/input'
-const selSavedButtonSuccess = ".gh-btn-green"
+const selMetadataTitle = '/html/body/div[2]/div/main/section/div[3]/section/div[1]/div[2]/div/div/div/div/div[1]/div[1]/input'
+const selMetadataDescription = '/html/body/div[2]/div/main/section/div[3]/section/div[1]/div[2]/div/div/div/div/div[1]/div[2]/textarea'
+const selTwitterTitle = '/html/body/div[2]/div/main/section/div[3]/section/div[2]/div[2]/div/div/div/div/div[1]/div[2]/input'
+const selTwitterDescription = '/html/body/div[2]/div/main/section/div[3]/section/div[2]/div[2]/div/div/div/div/div[1]/div[3]/textarea'
+const selFacebookTitle = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[2]/input'
+const selFacebookDescription = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[3]/textarea'
+const selSocialFacebook = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[1]/input'
+const selSocialTwitter = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[2]/input'
+
 const selTitleError = '/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[1]/p[1]'
 const selDescriptionError = '/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[2]/p[1]'
 const selLanguageError = '/html/body/div[2]/div/main/section/div[2]/section/div[3]/div[2]/div/div/div/div/p[1]'
+const selMetadataTitleError = '/html/body/div[2]/div/main/section/div[3]/section/div[1]/div[2]/div/div/div/div/div[1]/div[1]/p[1]'
+const selMetadataDescriptionError = '/html/body/div[2]/div/main/section/div[3]/section/div[1]/div[2]/div/div/div/div/div[1]/div[2]/p[1]'
+const selTwitterTitleError = '/html/body/div[2]/div/main/section/div[3]/section/div[2]/div[2]/div/div/div/div/div[1]/div[2]/p'
+const selTwitterDescriptionError = '/html/body/div[2]/div/main/section/div[3]/section/div[2]/div[2]/div/div/div/div/div[1]/div[3]/p'
+const selFacebookTitleError = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[2]/p'
+const selFacebookDescriptionError = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[3]/p'
+const selSocialFacebookError = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[1]/p[1]'
+const selSocialTwitterError = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[2]/p[1]'
 
 export function clickSettings() {
   cy.get(selLinkSettings).click();
@@ -43,6 +66,22 @@ export function clickExpandTitleAndDescription() {
 
 export function clickExpandLanguage() {
   cy.xpath(selExpandLanguage).click()
+}
+
+export function clickExpandMetadata() {
+  cy.xpath(selExpandMetadata).click()
+}
+
+export function clickExpandTwitter() {
+  cy.xpath(selExpandTwitter).click()
+}
+
+export function clickExpandFacebook() {
+  cy.xpath(selExpandFacebook).click()
+}
+
+export function clickExpandSocial() {
+  cy.xpath(selExpandSocial).click()
 }
 
 export function clearTitle() {
@@ -125,6 +164,38 @@ export function clearLanguageField() {
   cy.xpath(selLanguage).clear();
 }
 
+export function clearMetadataTitleField() {
+  cy.xpath(selMetadataTitle).clear();
+}
+
+export function clearMetadataDescriptionField() {
+  cy.xpath(selMetadataDescription).clear();
+}
+
+export function clearTwitterTitleField() {
+  cy.xpath(selTwitterTitle).clear();
+}
+
+export function clearTwitterDescriptionField() {
+  cy.xpath(selTwitterDescription).clear();
+}
+
+export function clearFacebookTitleField() {
+  cy.xpath(selFacebookTitle).clear();
+}
+
+export function clearFacebookDescriptionField() {
+  cy.xpath(selFacebookDescription).clear();
+}
+
+export function clearSocialFacebookField() {
+  cy.xpath(selSocialFacebook).clear();
+}
+
+export function clearSocialTwitterField() {
+  cy.xpath(selSocialTwitter).clear();
+}
+
 export function isTitleError() {
   cy.xpath(selTitleError).should('be.visible');
 }
@@ -149,6 +220,70 @@ export function isNotLanguageError() {
   cy.xpath(selLanguageError).should('not.be.visible');
 }
 
+export function isMetadataTitleError() {
+  cy.xpath(selMetadataTitleError).should('be.visible');
+}
+
+export function isNotMetadataTitleError() {
+  cy.xpath(selMetadataTitleError).should('not.be.visible');
+}
+
+export function isMetadataDescriptionError() {
+  cy.xpath(selMetadataDescriptionError).should('be.visible');
+}
+
+export function isNotMetadataDescriptionError() {
+  cy.xpath(selMetadataDescriptionError).should('not.be.visible');
+}
+
+export function isTwitterTitleError() {
+  cy.xpath(selTwitterTitleError).should('be.visible');
+}
+
+export function isNotTwitterTitleError() {
+  cy.xpath(selTwitterTitleError).should('not.be.visible');
+}
+
+export function isTwitterDescriptionError() {
+  cy.xpath(selTwitterDescriptionError).should('be.visible');
+}
+
+export function isNotTwitterDescriptionError() {
+  cy.xpath(selTwitterDescriptionError).should('not.be.visible');
+}
+
+export function isFacebookTitleError() {
+  cy.xpath(selFacebookTitleError).should('be.visible');
+}
+
+export function isNotFacebookTitleError() {
+  cy.xpath(selFacebookTitleError).should('not.be.visible');
+}
+
+export function isFacebookDescriptionError() {
+  cy.xpath(selFacebookDescriptionError).should('be.visible');
+}
+
+export function isNotFacebookDescriptionError() {
+  cy.xpath(selFacebookDescriptionError).should('not.be.visible');
+}
+
+export function isSocialFacebookError() {
+  cy.xpath(selSocialFacebookError).should('be.visible');
+}
+
+export function isNotSocialFacebookError() {
+  cy.xpath(selSocialFacebookError).should('not.be.visible');
+}
+
+export function isSocialTwitterError() {
+  cy.xpath(selSocialTwitterError).should('be.visible');
+}
+
+export function isNotSocialTwitterError() {
+  cy.xpath(selSocialTwitterError).should('not.be.visible');
+}
+
 export function isSaveButtonSuccess() {
   cy.get(selSavedButtonSuccess).should('be.visible');
 }
@@ -165,6 +300,38 @@ export function writeSiteLanguage(text) {
   cy.xpath(selLanguage).invoke('val', text).type('a', {force: true})
 }
 
+export function writeSiteMetadataTitle(text) {
+  cy.xpath(selMetadataTitle).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteMetadataDescription(text) {
+  cy.xpath(selMetadataDescription).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteTwitterTitle(text) {
+  cy.xpath(selTwitterTitle).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteTwitterDescription(text) {
+  cy.xpath(selTwitterDescription).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteFacebookTitle(text) {
+  cy.xpath(selFacebookTitle).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteFacebookDescription(text) {
+  cy.xpath(selFacebookDescription).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteSocialFacebook(text) {
+  cy.xpath(selSocialFacebook).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteSocialTwitter(text) {
+  cy.xpath(selSocialTwitter).invoke('val', text).click().type('a', {force: true})
+}
+
 export function focusDescriptionField() {
   cy.xpath(selDescription).click();
 }
@@ -175,4 +342,28 @@ export function focusTitleField() {
 
 export function focusLanguageField() {
   cy.xpath(selLanguage).click();
+}
+
+export function focusMetadataTitleField() {
+  cy.xpath(selMetadataTitle).click();
+}
+
+export function focusMetadataDescriptionField() {
+  cy.xpath(selMetadataDescription).click();
+}
+
+export function focusTwitterTitleField() {
+  cy.xpath(selTwitterTitle).click();
+}
+
+export function focusTwitterDescriptionField() {
+  cy.xpath(selTwitterDescription).click();
+}
+
+export function focusFacebookTitleField() {
+  cy.xpath(selFacebookTitle).click();
+}
+
+export function focusFacebookDescriptionField() {
+  cy.xpath(selFacebookDescription).click();
 }
