@@ -1,9 +1,7 @@
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 
-const faker = require('faker');
 import * as data from '../../data/data.json'
 import randomString from "../../functions/randomString";
-import removeChar from "../../functions/modifyString";
 
 import * as commonSettings from "../common/PageObjectIndex";
 
@@ -43,6 +41,12 @@ Given("I go to general settings page", () => {
   cy.wait(100);
   Cypress.env("vrtActive") && cy.screenshot("setting4");
 });
+
+Given('I go to navigation settings page', () => {
+  commonSettings.clickNavigationLink();
+  cy.wait(100);
+  Cypress.env("vrtActive") && cy.screenshot("setting5"); 
+})
 
 Given("I expand site title and description settings", () => {
   commonSettings.clickExpandButton();
@@ -198,6 +202,26 @@ When(`I clear social twitter field`, () => {
   Cypress.env("vrtActive") && cy.screenshot("setting15");
 })
 
+When(`I clear navigation field`, () => {
+  commonSettings.clearNavigationHomeField();
+  Cypress.env("vrtActive") && cy.screenshot("setting15");
+})
+
+When(`I clear navigation url field`, () => {
+  commonSettings.clearNavigationHomeUrlField();
+  Cypress.env("vrtActive") && cy.screenshot("setting15");
+})
+
+When(`I clear secondary navigation field`, () => {
+  commonSettings.clearNavigationSecondaryField();
+  Cypress.env("vrtActive") && cy.screenshot("setting15");
+})
+
+When(`I clear secondary navigation url field`, () => {
+  commonSettings.clearNavigationSecondaryUrlField();
+  Cypress.env("vrtActive") && cy.screenshot("setting15");
+})
+
 When(`I save settings`, () => {
   commonSettings.saveSettings();
   cy.wait(500);
@@ -271,6 +295,36 @@ When(`I type an incorrect social facebook account`, () => {
 
 When(`I type an incorrect social twitter account`, () => {
   commonSettings.writeSiteSocialTwitter(data.twitter_url + data.description_page_invalid);
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type a navigation with {string} characters`, (textLength) => {
+  commonSettings.writeSiteNavigationHome(randomString(textLength - 1));
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type a correct navigation url`, () => {
+  commonSettings.writeSiteNavigationHomeUrl(Cypress.env("ghost_url"));
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type an incorrect navigation url`, () => {
+  commonSettings.writeSiteNavigationHomeUrl(Cypress.env("ghost_url") + data.description_page_invalid);
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type a secondary navigation with {string} characters`, (textLength) => {
+  commonSettings.writeSiteNavigationSecondary(randomString(textLength - 1));
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type a correct secondary navigation url`, () => {
+  commonSettings.writeSiteNavigationSecondaryUrl(Cypress.env("ghost_url"));
+  Cypress.env("vrtActive") && cy.screenshot("setting18");
+})
+
+When(`I type an incorrect secondary navigation url`, () => {
+  commonSettings.writeSiteNavigationSecondaryUrl(Cypress.env("ghost_url") + data.description_page_invalid);
   Cypress.env("vrtActive") && cy.screenshot("setting18");
 })
 
@@ -426,5 +480,45 @@ Then('I should see a social twitter message error', () => {
 
 Then('I should not see a social twitter message error', () => {
   commonSettings.isNotSocialTwitterError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should see a navigation message error', () => {
+  commonSettings.isNavigationHomeError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should not see a navigation message error', () => {
+  commonSettings.isNotNavigationHomeError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should see a navigation url message error', () => {
+  commonSettings.isNavigationHomeUrlError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should not see a navigation url message error', () => {
+  commonSettings.isNotNavigationHomeUrlError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should see a secondary navigation message error', () => {
+  commonSettings.isNavigationSecondaryError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should not see a secondary navigation message error', () => {
+  commonSettings.isNotNavigationSecondaryError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should see a secondary navigation url message error', () => {
+  commonSettings.isNavigationSecondaryUrlError();
+  Cypress.env("vrtActive") && cy.screenshot("setting19"); 
+})
+
+Then('I should not see a secondary navigation url message error', () => {
+  commonSettings.isNotNavigationSecondaryUrlError();
   Cypress.env("vrtActive") && cy.screenshot("setting19"); 
 })

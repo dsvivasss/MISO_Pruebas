@@ -1,5 +1,6 @@
 const selLinkSettings = 'a[href="#/settings/"]';
 const selLinkGeneralSettings = 'a[href="#/settings/general/"]';
+const selNavigationLink = '/html/body/div[2]/div/main/section/section/div[2]/a[3]'
 const selInputs = ".ember-text-field.gh-input.ember-view";
 const selButtonSave = "button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view";
 const selExpandButton = ".gh-expandable-header>button";
@@ -25,6 +26,10 @@ const selFacebookTitle = '/html/body/div[2]/div/main/section/div[3]/section/div[
 const selFacebookDescription = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[3]/textarea'
 const selSocialFacebook = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[1]/input'
 const selSocialTwitter = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[2]/input'
+const selNavigationHome = '/html/body/div[2]/div/main/section/section/div[1]/div/form/div[1]/div[1]/div/div/span[1]/input'
+const selNavigationHomeUrl = '/html/body/div[2]/div/main/section/section/div[1]/div/form/div[1]/div[1]/div/div/span[2]/input'
+const selNavigationSecondary = '/html/body/div[2]/div/main/section/section/div[2]/div/form/div[1]/div/div/div/span[1]/input'
+const selNavigationSecondaryUrl = '/html/body/div[2]/div/main/section/section/div[2]/div/form/div[1]/div/div/div/span[2]/input'
 
 const selTitleError = '/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[1]/p[1]'
 const selDescriptionError = '/html/body/div[2]/div/main/section/div[2]/section/div[1]/div[2]/div/div/div/div[2]/p[1]'
@@ -37,6 +42,10 @@ const selFacebookTitleError = '/html/body/div[2]/div/main/section/div[3]/section
 const selFacebookDescriptionError = '/html/body/div[2]/div/main/section/div[3]/section/div[3]/div[2]/div/div/div/div/div[1]/div[3]/p'
 const selSocialFacebookError = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[1]/p[1]'
 const selSocialTwitterError = '/html/body/div[2]/div/main/section/div[3]/section/div[4]/div[2]/div/div/div/div[2]/p[1]'
+const selNavigationHomeError = '/html/body/div[2]/div/main/section/section/div[1]/div/form/div[1]/div[1]/div/div/span[1]/p'
+const selNavigationHomeUrlError = '/html/body/div[2]/div/main/section/section/div[1]/div/form/div[1]/div[1]/div/div/span[2]/p'
+const selNavigationSecondaryError = '/html/body/div[2]/div/main/section/section/div[2]/div/form/div[1]/div/div/div/span[1]/p'
+const selNavigationSecondaryUrlError = '/html/body/div[2]/div/main/section/section/div[2]/div/form/div[1]/div/div/div/span[2]/p'
 
 export function clickSettings() {
   cy.get(selLinkSettings).click();
@@ -44,6 +53,10 @@ export function clickSettings() {
 
 export function clickGeneralSettings() {
   cy.get(selLinkGeneralSettings).click();
+}
+
+export function clickNavigationLink() {
+  cy.xpath(selNavigationLink).click();
 }
 
 export function clickExpandButton() {
@@ -196,6 +209,22 @@ export function clearSocialTwitterField() {
   cy.xpath(selSocialTwitter).clear();
 }
 
+export function clearNavigationHomeField() {
+  cy.xpath(selNavigationHome).clear();
+}
+
+export function clearNavigationHomeUrlField() {
+  cy.xpath(selNavigationHomeUrl).clear();
+}
+
+export function clearNavigationSecondaryField() {
+  cy.xpath(selNavigationSecondary).clear();
+}
+
+export function clearNavigationSecondaryUrlField() {
+  cy.xpath(selNavigationSecondaryUrl).clear();
+}
+
 export function isTitleError() {
   cy.xpath(selTitleError).should('be.visible');
 }
@@ -284,6 +313,38 @@ export function isNotSocialTwitterError() {
   cy.xpath(selSocialTwitterError).should('not.be.visible');
 }
 
+export function isNavigationHomeError() {
+  cy.xpath(selNavigationHomeError).should('be.visible');
+}
+
+export function isNotNavigationHomeError() {
+  cy.xpath(selNavigationHomeError).should('not.be.visible');
+}
+
+export function isNavigationHomeUrlError() {
+  cy.xpath(selNavigationHomeUrlError).should('be.visible');
+}
+
+export function isNotNavigationHomeUrlError() {
+  cy.xpath(selNavigationHomeUrlError).should('not.be.visible');
+}
+
+export function isNavigationSecondaryError() {
+  cy.xpath(selNavigationSecondaryError).should('be.visible');
+}
+
+export function isNotNavigationSecondaryError() {
+  cy.xpath(selNavigationSecondaryError).should('not.be.visible');
+}
+
+export function isNavigationSecondaryUrlError() {
+  cy.xpath(selNavigationSecondaryUrlError).should('be.visible');
+}
+
+export function isNotNavigationSecondaryUrlError() {
+  cy.xpath(selNavigationSecondaryUrlError).should('not.be.visible');
+}
+
 export function isSaveButtonSuccess() {
   cy.get(selSavedButtonSuccess).should('be.visible');
 }
@@ -330,6 +391,22 @@ export function writeSiteSocialFacebook(text) {
 
 export function writeSiteSocialTwitter(text) {
   cy.xpath(selSocialTwitter).invoke('val', text).click().type('a', {force: true})
+}
+
+export function writeSiteNavigationHome(text) {
+  cy.xpath(selNavigationHome).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteNavigationHomeUrl(text) {
+  cy.xpath(selNavigationHomeUrl).invoke('val', text).click().type('a', {force: true})
+}
+
+export function writeSiteNavigationSecondary(text) {
+  cy.xpath(selNavigationSecondary).invoke('val', text).type('a', {force: true})
+}
+
+export function writeSiteNavigationSecondaryUrl(text) {
+  cy.xpath(selNavigationSecondaryUrl).invoke('val', text).click().type('a', {force: true})
 }
 
 export function focusDescriptionField() {

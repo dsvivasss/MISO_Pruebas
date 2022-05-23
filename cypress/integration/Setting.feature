@@ -3,7 +3,7 @@ Feature: Settings features
   I want to modify the site settings
 
   @focus
-  Scenario: Change site title with non characters
+  Scenario: Change site title empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -50,7 +50,7 @@ Feature: Settings features
     Then I should not see a title message error
 
   @focus
-  Scenario: Change site description with non characters
+  Scenario: Change site description empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -97,7 +97,7 @@ Feature: Settings features
     Then I should not see a description message error
 
   @focus
-  Scenario: Change site language with non characters
+  Scenario: Change site language empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -148,7 +148,7 @@ Feature: Settings features
     Then I should not see a language message error
   
   @focus
-  Scenario: Change site meta data title with non characters
+  Scenario: Change site meta data title empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -195,7 +195,7 @@ Feature: Settings features
     Then I should not see a meta data title message error
 
   @focus  
-  Scenario: Change site meta data description with non characters
+  Scenario: Change site meta data description empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -242,7 +242,7 @@ Feature: Settings features
     Then I should not see a meta data description message error
 
   @focus
-  Scenario: Change site twitter title with non characters
+  Scenario: Change site twitter title empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -289,7 +289,7 @@ Feature: Settings features
     Then I should not see a twitter title message error
 
   @focus
-  Scenario: Change site twitter description with non characters
+  Scenario: Change site twitter description empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -336,7 +336,7 @@ Feature: Settings features
     Then I should not see a twitter description message error
 
   @focus
-  Scenario: Change site facebook title with non characters
+  Scenario: Change site facebook title empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -383,7 +383,7 @@ Feature: Settings features
     Then I should not see a facebook title message error
 
   @focus
-  Scenario: Change site facebook description with non characters
+  Scenario: Change site facebook description empty
     Given I open Ghost admin page
     When I login into the admin page
     And I go to the settings page
@@ -430,6 +430,17 @@ Feature: Settings features
     Then I should not see a facebook description message error
 
   @focus
+  Scenario: Set an empty facebook account
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to general settings page
+    And I expand social
+    And I clear social facebook field
+    And I save settings
+    Then I should not see a social facebook message error
+  
+  @focus
   Scenario: Set a correct facebook account
     Given I open Ghost admin page
     When I login into the admin page
@@ -454,6 +465,17 @@ Feature: Settings features
     Then I should see a social facebook message error
 
   @focus
+  Scenario: Set an empty twitter account
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to general settings page
+    And I expand social
+    And I clear social twitter field
+    And I save settings
+    Then I should not see a social twitter message error
+  
+  @focus
   Scenario: Set a correct twitter account
     Given I open Ghost admin page
     When I login into the admin page
@@ -476,3 +498,89 @@ Feature: Settings features
     And I type an incorrect social twitter account
     And I save settings
     Then I should see a social twitter message error
+
+  @focus
+  Scenario: Change site navigation empty
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation field
+    And I save settings
+    Then I should see a navigation message error
+    
+  @focus
+  Scenario: Change site navigation with more than 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation field
+    And I type a navigation with "65536" characters
+    And I save settings
+    Then I should see a navigation message error
+
+  @focus
+  Scenario: Change site navigation with 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation field
+    And I type a navigation with "65535" characters
+    And I save settings
+    Then I should not see a navigation message error
+
+  @focus
+  Scenario: Change site navigation with less than 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear navigation field
+    And I type a navigation with "100" characters
+    And I save settings
+    Then I should not see a navigation message error
+  
+  @focus
+  Scenario: Change site secondary navigation empty
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear secondary navigation field
+    And I save settings
+    Then I should see a secondary navigation message error
+    
+  @focus
+  Scenario: Change site secondary navigation with more than 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear secondary navigation field
+    And I type a secondary navigation with "65536" characters
+    And I save settings
+    Then I should see a secondary navigation message error
+
+  @focus
+  Scenario: Change site secondary navigation with 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear secondary navigation field
+    And I type a secondary navigation with "65535" characters
+    And I save settings
+    Then I should not see a secondary navigation message error
+
+  @focus
+  Scenario: Change site secondary navigation with less than 65535 characters
+    Given I open Ghost admin page
+    When I login into the admin page
+    And I go to the settings page
+    And I go to navigation settings page
+    And I clear secondary navigation field
+    And I type a secondary navigation with "100" characters
+    And I save settings
+    Then I should not see a secondary navigation message error

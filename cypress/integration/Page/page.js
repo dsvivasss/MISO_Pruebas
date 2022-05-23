@@ -2,8 +2,9 @@ import { Then, Given, When, After } from "cypress-cucumber-preprocessor/steps";
 
 // import data apriori
 import * as data from '../../data/data.json'
-import randomString from "../../functions/randomString";
 import removeChar from "../../functions/modifyString";
+import randomString from "../../functions/randomString";
+
 
 import {
   setEmail,
@@ -43,6 +44,8 @@ Cypress.Screenshot.defaults({
   overwrite: true
 })
 
+const objPseudoAleatorio = {}
+
 Given("I open Ghost admin page", () => {
   cy.visit(Cypress.env("url_admin"));
   cy.wait(2000);
@@ -51,8 +54,7 @@ Given("I open Ghost admin page", () => {
 });
 
 Given("I login into the admin page", () => {
-  // setEmail(Cypress.env("admin_email"));
-  setEmail(removeChar(data.input_email_admin, "@")); // Ejemplo removiendo caracteres de un string --------
+  setEmail(Cypress.env("admin_email"));
   setPassword(Cypress.env("admin_password"));
   clickLogin();
   cy.wait(2000);
@@ -70,8 +72,9 @@ When("I create a new page", () => {
   Cypress.env("vrtActive") && cy.screenshot("page4");
 });
 
-When("I write {string} in the page title", (title) => {
-  writeTitle(randomString(10)); // Ejemplo utilizando random string ----------------------> randomString(10)
+When("I write a title with {string} characters", (titleLength) => {
+  objPseudoAleatorio.title = randomString(titleLength);
+  writeTitle(objPseudoAleatorio.title);
   cy.wait(100);
   Cypress.env("vrtActive") && cy.screenshot("page5");
 });
@@ -110,6 +113,13 @@ Then("I see that the new page is named as {string}", function (title) {
   // Get first post
   const firstPost = getFirstPost();
   firstPost.should("contain.text", title);
+  Cypress.env("vrtActive") && cy.screenshot("page11");
+});
+
+Then("I see that the new page is named as the one just created", function () {
+  // Get first post
+  const firstPost = getFirstPost();
+  firstPost.should("contain.text", objPseudoAleatorio.title);
   Cypress.env("vrtActive") && cy.screenshot("page11");
 });
 
