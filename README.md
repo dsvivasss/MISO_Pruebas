@@ -47,7 +47,7 @@ Pre-requisitos:
 # Estrategia de pruebas
 
 ### Pool de datos a-priori
-* Se genero el archivo data.json en el directorio cypress> data. El jason fue generado usando la herramienta Mockaroo. Estos datos fueron integrados principalmente en los escenarios de Login Feature.
+* Se genero el archivo data.json en el directorio cypress> data. El json fue generado usando la herramienta Mockaroo. Estos datos fueron integrados principalmente en los escenarios de Login Feature.
 
 ### Pool de datos (pseudo) aleatorio dinámico
 * Se guardaron los datos en la misma función de la feature Create Page y en tiempo de ejecución se escogió de forma aleatoria el dato a presentar en el escenario de prueba. Se creó el dato en un paso, y en uno posterior se reutilizó la informacion.
