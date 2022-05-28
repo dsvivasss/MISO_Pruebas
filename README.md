@@ -4,7 +4,7 @@ Integrantes:
 * Daniel Vivas Suarez d.vivass@uniandes.edu.co
 * Mateo Olaya Osorio m.olaya11@uniandes.edu.co
 
-# Dado que el grupo es de dos personas, se ejecutaron 60 casos de prueba.
+# Dado que el grupo es de dos personas, la estrategia de pruebas tuvo en cuenta el tiempo de dos tester senior.
 
 ## Cómo ejecutar los tests
 
@@ -55,9 +55,12 @@ Pre-requisitos:
 ### Escenario aleatorio
 * Se usó la libreria de Faker para seleccionar los datos de los escenarios relacionados con las features de Settings. Esto facilitó crear un gran nivel de datos de prueba para cada una de las ejecuciones, en tanto no fue necesario construir el data pool de manera manual. 
 
+### Inventario de pruebas manuales
+[Enlace Inventario de pruebas](https://uniandes-my.sharepoint.com/:x:/g/personal/m_olaya11_uniandes_edu_co/EcWmfoiyKzNErRIPoy_fxocB67wWsyoP-3PDrX_HZoliVA?e=JeuobZ)
+
 
 ### Relación de las estrategias y los casos de prueba
-<img width="501" alt="image" src="https://user-images.githubusercontent.com/98785714/169745799-628bf70a-b1d1-4714-9a62-af018d753ebe.png">
+
 
 
 
